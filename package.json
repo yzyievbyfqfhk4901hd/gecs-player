@@ -1,0 +1,102 @@
+{
+  "name": "rep",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "electron-is-dev": "^3.0.1",
+    "ffmpeg-static": "^5.2.0",
+    "lucide-react": "^0.544.0",
+    "music-metadata": "^11.9.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-scripts": "5.0.1",
+    "scdl": "^0.1.6",
+    "soundcloud-downloader": "^1.0.0",
+    "web-vitals": "^2.1.4",
+    "ytdl-core": "^4.11.5"
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build-python": "node -e \"process.platform === 'win32' ? require('child_process').exec('build-python.bat') : require('child_process').exec('bash build-python.sh')\"",
+    "electron-pack": "npm run build && npm run build-python && electron-builder",
+    "preelectron-pack": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^38.1.2",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^9.0.1"
+  },
+  "build": {
+    "appId": "com.example.rep",
+    "productName": "Gecs Player",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "dist/python_downloader.exe",
+      "dist/python_downloader"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/favicon.ico",
+      "extraResources": [
+        {
+          "from": "dist/python_downloader.exe",
+          "to": "python_downloader.exe"
+        }
+      ]
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/logo512.png",
+      "extraResources": [
+        {
+          "from": "dist/python_downloader",
+          "to": "python_downloader"
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/logo512.png",
+      "extraResources": [
+        {
+          "from": "dist/python_downloader",
+          "to": "python_downloader"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.song-info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.song-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.artist-name {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  margin-bottom: 0.25rem;
+}
+
+.album-name {
+  font-size: 1rem;
+  opacity: 0.8;
+}

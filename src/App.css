@@ -1,0 +1,53 @@
+.mp3-player {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+.player-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.playlist-section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  flex-shrink: 0;
+  width: fit-content;
+  max-width: 350px;
+  min-height: 0;
+}
+
+@media (max-width: 1000px) {
+  .player-content {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .player-content {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .player-content {
+    min-width: 0;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .player-content {
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+  }
+}

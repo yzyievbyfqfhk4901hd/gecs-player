@@ -1,0 +1,111 @@
+:root {
+  --primary-dark: #0F0F0F;
+  --secondary-dark: #1A1A1A;
+  --accent-color: #4A90E2;
+  --light-color: #E8F4FD;
+  --text-color: white;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --danger-color: #ff4757;
+  --danger-hover: #ff3742;
+  
+  --glow-primary: rgba(74, 144, 226, 0.15);
+  --glow-secondary: rgba(107, 182, 255, 0.1);
+  --glow-light: rgba(232, 244, 253, 0.05);
+  --glow-primary-subtle: rgba(74, 144, 226, 0.08);
+  --glow-secondary-subtle: rgba(107, 182, 255, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 50%, #0F0F0F 100%);
+  color: var(--text-color);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 85% 15%, var(--glow-primary) 0%, transparent 70%);
+  animation: dotPulse 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 90% 10%, var(--glow-primary-subtle) 0%, transparent 60%),
+    radial-gradient(circle at 15% 85%, var(--glow-secondary) 0%, transparent 70%);
+  animation: dotPulse 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5ba0f2;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--secondary-dark);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--secondary-dark);
+}
