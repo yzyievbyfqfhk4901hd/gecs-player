@@ -22,7 +22,6 @@ const useAudio = (currentSong, musicFiles, currentSongIndex, onNextRef, repeatMo
   const isInitialLoad = useRef(true);
   const hasLoadedState = useRef(false);
 
-  // Load saved state on component mount
   useEffect(() => {
     const loadSavedState = async () => {
       if (hasLoadedState.current) return;
