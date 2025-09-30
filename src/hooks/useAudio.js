@@ -2,6 +2,17 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { getAudioFileUrl } from '../utils/folderUtils';
 import { loadAppState, saveAppState, getDefaultState } from '../utils/stateUtils';
 
+const percentageToAmplitude = (percentage) => {
+  if (percentage === 0) return 0;
+  
+  const minDb = -60;
+  const maxDb = 0;
+  const db = minDb + (percentage / 100) * (maxDb - minDb);
+  
+  return Math.pow(10, db / 20);
+};
+
+
 const useAudio = (currentSong, musicFiles, currentSongIndex, onNextRef, repeatMode) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -122,7 +133,7 @@ const useAudio = (currentSong, musicFiles, currentSongIndex, onNextRef, repeatMo
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.volume = volume / 100;
+      audio.volume = percentageToAmplitude(volume);
     }
   }, [volume]);
 
@@ -150,7 +161,7 @@ const useAudio = (currentSong, musicFiles, currentSongIndex, onNextRef, repeatMo
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = newVolume / 100;
+    audio.volume = percentageToAmplitude(newVolume);
     setVolume(newVolume);
     
     try {
