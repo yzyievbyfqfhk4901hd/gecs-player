@@ -56,7 +56,7 @@ const Playlist = ({ musicFiles = [], currentSongIndex = 0, onSongSelect, onDelet
   return (
     <aside className="playlist-sidebar">
       <h3>
-        {isAlbumMode ? 'Album Playlist' : 'Playlist'}
+        {isAlbumMode ? 'Album' : 'Playlist'}
       </h3>
       <div className="playlist-search">
         <input 
